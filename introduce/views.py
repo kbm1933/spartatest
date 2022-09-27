@@ -1,7 +1,9 @@
 from django.shortcuts import render
-import logging
+from introduce.models import Admin_AccessLog
 
-logger = logging.getLogger('mylogger')
-def first_view(request):
-    return render(request,'introduce.html')
 # Create your views here.
+def introduce(request):
+    access_log = Admin_AccessLog()
+    access_log.location = "introduce"
+    access_log.save()
+    return render(request,'introduce.html')
